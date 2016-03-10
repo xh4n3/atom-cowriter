@@ -1,0 +1,19 @@
+{
+  "name": "cowriter",
+  "main": "./lib/cowriter",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "cowriter:toggle"
+  },
+  "repository": "https://github.com/atom/cowriter",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+    "avoscloud-sdk": "0.6.9"
+  }
+}
