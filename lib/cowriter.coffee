@@ -1,4 +1,5 @@
 CowriterView = require './cowriter-view'
+diff = require 'diff'
 AV = require 'avoscloud-sdk'
 {CompositeDisposable} = require 'atom'
 AV.initialize 'APPID','APPKEY'
