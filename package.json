@@ -14,6 +14,7 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "avoscloud-sdk": "0.6.9"
+    "avoscloud-sdk": "0.6.9",
+    "diff": "2.2.1"
   }
 }
