@@ -2,7 +2,7 @@
   "name": "cowriter",
   "main": "./lib/cowriter",
   "version": "0.1.0",
-  "description": "A short description of your package",
+  "description": "Collaborative coding via LeanCloud.",
   "keywords": [
     "collaborative"
   ],
