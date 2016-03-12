@@ -37,9 +37,6 @@ module.exports = Cowriter =
       @query = new AV.Query 'Acticles'
       # Base time for syncing
       @syncTime = new Date()
-      #### DEBUG ONLY
-      # @syncTime = new Date '2016-03-12 19:09:20'
-      ####
       # Client: Refresh view every 3 seconds
       @interval = setInterval ( => @getDiff() ), 3000
       console.log 'Client starts.'
@@ -94,13 +91,14 @@ module.exports = Cowriter =
     @query.equalTo 'document', @title
     @query.addAscending 'updatedAt'
     @query.find().then (response) =>
-      console.log @query
-      console.log 'success'
-      console.log response
       @applyDiff res['attributes']['diff'] for res in response
+      # updates syncTime with lastest update
+      if response.length > 0
+        @syncTime = response[response.length - 1]['updatedAt']
 
   applyDiff: (diff) ->
-    console.log diff
+    if diff.length == 0
+      return
     x = @editor.getText()
     str = ""
     position = 0
@@ -115,8 +113,6 @@ module.exports = Cowriter =
         # remains unchanged
         str += x.slice position, position + item['count']
         position += item['count']
-    # updates syncTime with lastest update
-    @syncTime = diff['updatedAt']
     # apply diffs to current text one by one
     process item for item in diff
     @editor.setText str
