@@ -18,10 +18,10 @@ module.exports = Cowriter =
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'cowriter:toggle': => @toggle()
     # Current document's title
-    @title= 'demo'
+    @title = 'demo'
     # mode: server, client
-    # @mode = 'server'
-    @mode = 'client'
+    @mode = 'server'
+    # @mode = 'client'
     # Initialization for Sever
     if @mode == 'server'
       # Save new diff
@@ -38,7 +38,7 @@ module.exports = Cowriter =
       # Base time for syncing
       @syncTime = new Date()
       #### DEBUG ONLY
-      @syncTime = new Date '2016-03-12 19:09:20'
+      # @syncTime = new Date '2016-03-12 19:09:20'
       ####
       # Client: Refresh view every 3 seconds
       @interval = setInterval ( => @getDiff() ), 3000
@@ -94,6 +94,7 @@ module.exports = Cowriter =
     @query.equalTo 'document', @title
     @query.addAscending 'updatedAt'
     @query.find().then (response) =>
+      console.log @query
       console.log 'success'
       console.log response
       @applyDiff res['attributes']['diff'] for res in response
